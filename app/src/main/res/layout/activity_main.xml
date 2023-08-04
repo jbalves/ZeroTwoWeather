@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".MainActivity">
+
+        <TextView
+            android:id="@+id/StuttgardTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Stuttgard"
+            android:textSize="24sp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="5dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/september12TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/StuttgardTextView"
+            android:layout_centerHorizontal="true"
+            android:text="12september, "
+            android:textSize="18sp"
+            android:layout_marginStart="5dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/StuttgardTextView" />
+
+        <TextView
+            android:id="@+id/SundayTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/september12TextView"
+            android:text="Sunday"
+            android:textSize="18sp"
+            app:layout_constraintStart_toEndOf="@+id/september12TextView"
+            app:layout_constraintTop_toBottomOf="@+id/StuttgardTextView" />
+
+        <Button
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            app:layout_constraintBottom_toBottomOf="@+id/SundayTextView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/StuttgardTextView"
+            android:layout_marginEnd="5dp"
+            android:backgroundTint="@color/black"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
