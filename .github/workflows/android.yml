@@ -19,8 +19,19 @@ jobs:
         java-version: '17'
         distribution: 'temurin'
         cache: gradle
-
+    - run: echo "The workflow is now ready." 
+    
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
+      
+    - run: echo "Building Debug APK."       
     - name: Build with Gradle
-      run: ./gradlew build
+      run: ./gradlew assembleDebug --stacktrace
+    - run: echo "Build status report=${{ job.status }}."
+    
+    - run: echo "Uploading APK"
+    - name: Upload APK
+      uses: actions/upload-artifact@v3
+      with:
+        name: apk
+        path: app/build/outputs/apk/debug/app-debug.apk
