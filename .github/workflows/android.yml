@@ -31,9 +31,3 @@ jobs:
       with:
         name: app
         path: app/build/outputs/apk/debug/app-debug.apk
-        
-    - name: Download APK build artifact
-      uses: actions/download-artifact@v3
-      with:
-        name: app
-        path: app/build/outputs/apk/debug/app-debug.apk
