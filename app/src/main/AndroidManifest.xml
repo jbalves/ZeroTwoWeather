@@ -13,6 +13,9 @@
         android:theme="@style/Theme.ZeroTwoWeather"
         tools:targetApi="31">
         <activity
+            android:name=".view.ActivityDayWeek"
+            android:exported="false" />
+        <activity
             android:name=".view.NextDaysActivity"
             android:exported="false" />
         <activity
