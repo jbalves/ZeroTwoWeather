@@ -6,6 +6,8 @@
         android:layout_height="match_parent"
         tools:context=".view.MainActivity">
 
+
+
         <TextView
             android:id="@+id/StuttgardTextView"
             android:layout_width="wrap_content"
@@ -81,6 +83,9 @@
         </androidx.cardview.widget.CardView>
 
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
 
 
