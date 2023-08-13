@@ -7,11 +7,17 @@ import android.widget.Button
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.zerotwoweather.R
+import com.example.zerotwoweather.view.remote.RetrofitModule
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
 
     lateinit var rvTempList: RecyclerView
     lateinit var cardAdapter: AdapterCardTemp
+
+    private val retrofitModule = RetrofitModule
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,7 +40,6 @@ class MainActivity : AppCompatActivity() {
         rvTempList.adapter = cardAdapter
 
         cardAdapter.submitList(cardTempList)
-
 
         val btnOpenDay = findViewById<Button>(R.id.btn_open_dayWeek)
         btnOpenDay.setOnClickListener {
