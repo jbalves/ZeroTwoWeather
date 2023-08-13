@@ -1,13 +1,14 @@
 package com.example.zerotwoweather.view
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.example.zerotwoweather.view.remote.RetrofitModule
 import com.example.zerotwoweather.view.remote.WeatherDto
-import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers.IO
-import kotlinx.coroutines.coroutineScope
+import kotlinx.coroutines.launch
 
 class WeatherListViewModel(
     private val weatherService: WeatherService
@@ -16,9 +17,18 @@ class WeatherListViewModel(
     private val _weatherListLiveData = MutableLiveData<List<WeatherDto>>()
     val newsListLiveData: LiveData<List<WeatherDto>> = _weatherListLiveData
 
-    private fun getWeatherList(){
-        viewModelScope.launch(IO) {
+    init {
+        getWeatherList()
+    }
 
+    private fun getWeatherList() {
+        viewModelScope.launch {
+            try {
+                val response = weatherService.getWeatherData()
+                _weatherListLiveData.value = response.latitude
+            } catch (ex: Exception){
+                ex.printStackTrace()
+            }
         }
     }
 

@@ -1,8 +1,10 @@
 package com.example.zerotwoweather.view.remote
 
 data class WeatherResponse(
-    val daily_units: String,
-    val daily: List<WeatherDto>
+//    val daily_units: List<WeatherDto>,
+//    val daily: List<WeatherDto>,
+    val latitude: List<WeatherDto>,
+    val longitude: String,
 )
 
 data class WeatherDto(

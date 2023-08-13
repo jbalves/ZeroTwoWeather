@@ -2,6 +2,7 @@ package com.example.zerotwoweather.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.lifecycle.viewModelScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.zerotwoweather.R
@@ -15,7 +16,9 @@ class MainActivity : AppCompatActivity() {
     lateinit var rvTempList: RecyclerView
     lateinit var cardAdapter: AdapterCardTemp
 
-    private val retrofitModule = RetrofitModule
+    private val viewModel by lazy {
+        WeatherListViewModel.create()
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,9 +42,14 @@ class MainActivity : AppCompatActivity() {
 
         cardAdapter.submitList(cardTempList)
 
-//        val weatherService = retrofitModule.createWeatherService()
-//
-////        weatherService
-////            .getWeatherData()
+        viewModel.newsListLiveData.observe(this) { weatherList ->
+            cardTempList.map { weatherDto ->
+                CardTemp(
+                    hora = weatherDto.hora,
+                    imagemClima = weatherDto.imagemClima,
+                    temp = weatherDto.temp
+                )
+            }
+        }
     }
 }
