@@ -1,7 +1,9 @@
 package com.example.zerotwoweather.view
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Button
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.zerotwoweather.R
@@ -39,9 +41,14 @@ class MainActivity : AppCompatActivity() {
 
         cardAdapter.submitList(cardTempList)
 
-//        val weatherService = retrofitModule.createWeatherService()
-//
-////        weatherService
-////            .getWeatherData()
+        val btnOpenDay = findViewById<Button>(R.id.btn_open_dayWeek)
+        btnOpenDay.setOnClickListener {
+            openDay()
+        }
+
+    }
+    fun openDay(){
+        val intent = Intent(this, ActivityDayWeek::class.java)
+        startActivity(intent)
     }
 }
