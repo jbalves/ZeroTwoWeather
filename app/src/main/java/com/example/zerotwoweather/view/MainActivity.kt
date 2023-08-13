@@ -1,8 +1,10 @@
 package com.example.zerotwoweather.view
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.lifecycle.viewModelScope
+import android.widget.Button
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.zerotwoweather.R
@@ -16,9 +18,7 @@ class MainActivity : AppCompatActivity() {
     lateinit var rvTempList: RecyclerView
     lateinit var cardAdapter: AdapterCardTemp
 
-    private val viewModel by lazy {
-        WeatherListViewModel.create()
-    }
+    private val retrofitModule = RetrofitModule
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -51,5 +51,15 @@ class MainActivity : AppCompatActivity() {
                 )
             }
         }
+
+        val btnOpenDay = findViewById<Button>(R.id.btn_open_dayWeek)
+        btnOpenDay.setOnClickListener {
+            openDay()
+        }
+
+    }
+    fun openDay(){
+        val intent = Intent(this, ActivityDayWeek::class.java)
+        startActivity(intent)
     }
 }
