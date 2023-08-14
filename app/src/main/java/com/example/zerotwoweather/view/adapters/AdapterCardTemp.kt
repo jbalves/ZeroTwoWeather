@@ -10,8 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.zerotwoweather.R
 import com.example.zerotwoweather.data.model.CardTemperature
 
-class AdapterCardTemp() : ListAdapter<CardTemperature, CardTempViewHolder>(AdapterCardTemp) {
-
+class AdapterCardTemp : ListAdapter<CardTemperature, CardTempViewHolder>(AdapterCardTemp) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CardTempViewHolder {
         val view: View =
@@ -37,8 +36,6 @@ class AdapterCardTemp() : ListAdapter<CardTemperature, CardTempViewHolder>(Adapt
         }
 
     }
-
-
 }
 
 class CardTempViewHolder(view: View) : RecyclerView.ViewHolder(view) {
