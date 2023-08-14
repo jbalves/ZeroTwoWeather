@@ -1,3 +1,3 @@
 package com.example.zerotwoweather.view
 
-data class CardTemp(val hora: String, val imagemClima: String, val temp: String)
+data class CardTemp(val time: String, val temperature_2m: String)

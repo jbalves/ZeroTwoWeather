@@ -15,7 +15,7 @@ class WeatherListViewModel(
 ): ViewModel() {
 
     private val _weatherListLiveData = MutableLiveData<List<WeatherDto>>()
-    val newsListLiveData: LiveData<List<WeatherDto>> = _weatherListLiveData
+    val weatherListLiveData: LiveData<List<WeatherDto>> = _weatherListLiveData
 
     init {
         getWeatherList()
@@ -25,7 +25,7 @@ class WeatherListViewModel(
         viewModelScope.launch {
             try {
                 val response = weatherService.getWeatherData()
-                _weatherListLiveData.value = response.latitude
+                _weatherListLiveData.value = listOf(response.hourly)
             } catch (ex: Exception){
                 ex.printStackTrace()
             }

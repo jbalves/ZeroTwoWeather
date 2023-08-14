@@ -10,7 +10,7 @@ object RetrofitModule {
     fun createWeatherService(): WeatherService {
         val retrofit = Retrofit
             .Builder()
-            .baseUrl("https://climate-api.open-meteo.com/")
+            .baseUrl("https://api.open-meteo.com/")
             .addConverterFactory(GsonConverterFactory.create(Gson()))
 
         return retrofit
