@@ -22,16 +22,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-//        val cardTempList = arrayListOf<CardTemp>(
-//            CardTemp("6 am", "jsapdoifjasdf", "12º"),
-//            CardTemp("7 am", "dsifjsa", "14º"),
-//            CardTemp("8 am", "dasipfhasd", "15º"),
-//            CardTemp("9 am", "doishfsadf", "16º"),
-//            CardTemp("10 am", "jsapdoifjasdf", "12º"),
-//            CardTemp("11 am", "dsifjsa", "14º"),
-//            CardTemp("12 am", "dasipfhasd", "15º")
-//            )
-
         cardAdapter = AdapterCardTemp()
         rvTempList = findViewById<RecyclerView>(R.id.rv_temp_list)
 
