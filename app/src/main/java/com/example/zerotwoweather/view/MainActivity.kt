@@ -3,15 +3,13 @@ package com.example.zerotwoweather.view
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.lifecycle.viewModelScope
 import android.widget.Button
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.zerotwoweather.R
-import com.example.zerotwoweather.view.remote.RetrofitModule
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
+import com.example.zerotwoweather.data.model.CardTemperature
+import com.example.zerotwoweather.view.adapters.AdapterCardTemp
+import com.example.zerotwoweather.viewmodel.WeatherListViewModel
 
 class MainActivity : AppCompatActivity() {
 
@@ -44,7 +42,7 @@ class MainActivity : AppCompatActivity() {
         viewModel.weatherListLiveData.observe(this) { cardTempList ->
             val cardList = cardTempList.map { weatherDto ->
 
-                CardTemp(
+                CardTemperature(
                     time = weatherDto.time.toString(),
                     temperature_2m = weatherDto.temperature_2m.toString()
                 )
@@ -59,7 +57,7 @@ class MainActivity : AppCompatActivity() {
 
     }
     fun openDay(){
-        val intent = Intent(this, ActivityDayWeek::class.java)
+        val intent = Intent(this, DayWeekActivity::class.java)
         startActivity(intent)
     }
 }

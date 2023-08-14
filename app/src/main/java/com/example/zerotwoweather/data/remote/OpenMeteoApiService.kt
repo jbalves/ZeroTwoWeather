@@ -1,6 +1,5 @@
-package com.example.zerotwoweather.view
+package com.example.zerotwoweather.data.remote
 
-import com.example.zerotwoweather.view.remote.WeatherResponse
 import retrofit2.http.GET
 
 interface WeatherService {

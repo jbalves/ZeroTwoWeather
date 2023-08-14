@@ -1,6 +1,4 @@
-package com.example.zerotwoweather.view.remote
-
-import java.time.LocalDateTime
+package com.example.zerotwoweather.data.remote
 
 data class WeatherResponse(
     val hourly: WeatherDto

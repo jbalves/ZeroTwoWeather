@@ -1,4 +1,4 @@
-package com.example.zerotwoweather.view
+package com.example.zerotwoweather.view.adapters
 
 import android.view.LayoutInflater
 import android.view.View
@@ -8,8 +8,9 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.zerotwoweather.R
+import com.example.zerotwoweather.data.model.CardTemperature
 
-class AdapterCardTemp() : ListAdapter<CardTemp, CardTempViewHolder>(AdapterCardTemp) {
+class AdapterCardTemp() : ListAdapter<CardTemperature, CardTempViewHolder>(AdapterCardTemp) {
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CardTempViewHolder {
@@ -26,12 +27,12 @@ class AdapterCardTemp() : ListAdapter<CardTemp, CardTempViewHolder>(AdapterCardT
     }
 
 
-    companion object : DiffUtil.ItemCallback<CardTemp>() {
-        override fun areItemsTheSame(oldItem: CardTemp, newItem: CardTemp): Boolean {
+    companion object : DiffUtil.ItemCallback<CardTemperature>() {
+        override fun areItemsTheSame(oldItem: CardTemperature, newItem: CardTemperature): Boolean {
             return oldItem == newItem
         }
 
-        override fun areContentsTheSame(oldItem: CardTemp, newItem: CardTemp): Boolean {
+        override fun areContentsTheSame(oldItem: CardTemperature, newItem: CardTemperature): Boolean {
             return oldItem.time == newItem.time && oldItem.temperature_2m == newItem.temperature_2m
         }
 
@@ -44,9 +45,9 @@ class CardTempViewHolder(view: View) : RecyclerView.ViewHolder(view) {
     val tvHora = view.findViewById<TextView>(R.id.tv_horas)
     val tvTemp = view.findViewById<TextView>(R.id.tv_temperatura)
 
-    fun bind(cardTemp: CardTemp) {
-        tvHora.text = cardTemp.time
-        tvTemp.text = cardTemp.temperature_2m
+    fun bind(cardTemperature: CardTemperature) {
+        tvHora.text = cardTemperature.time
+        tvTemp.text = cardTemperature.temperature_2m
     }
 
 }
