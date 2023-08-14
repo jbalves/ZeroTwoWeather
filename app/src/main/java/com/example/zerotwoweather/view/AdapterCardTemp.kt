@@ -32,7 +32,7 @@ class AdapterCardTemp() : ListAdapter<CardTemp, CardTempViewHolder>(AdapterCardT
         }
 
         override fun areContentsTheSame(oldItem: CardTemp, newItem: CardTemp): Boolean {
-            return oldItem.hora == newItem.hora && oldItem.temp == newItem.temp
+            return oldItem.time == newItem.time && oldItem.temperature_2m == newItem.temperature_2m
         }
 
     }
@@ -45,8 +45,8 @@ class CardTempViewHolder(view: View) : RecyclerView.ViewHolder(view) {
     val tvTemp = view.findViewById<TextView>(R.id.tv_temperatura)
 
     fun bind(cardTemp: CardTemp) {
-        tvHora.text = cardTemp.hora
-        tvTemp.text = cardTemp.temp
+        tvHora.text = cardTemp.time
+        tvTemp.text = cardTemp.temperature_2m
     }
 
 }

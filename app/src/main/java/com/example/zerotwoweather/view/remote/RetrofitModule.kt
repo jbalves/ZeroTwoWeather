@@ -7,13 +7,13 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 object RetrofitModule {
 
-    fun createWeatherService(){
+    fun createWeatherService(): WeatherService {
         val retrofit = Retrofit
             .Builder()
-            .baseUrl("https://climate-api.open-meteo.com/")
+            .baseUrl("https://api.open-meteo.com/")
             .addConverterFactory(GsonConverterFactory.create(Gson()))
 
-        retrofit
+        return retrofit
             .build()
             .create(WeatherService::class.java)
     }

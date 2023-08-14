@@ -3,6 +3,7 @@ package com.example.zerotwoweather.view
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.lifecycle.viewModelScope
 import android.widget.Button
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -17,21 +18,21 @@ class MainActivity : AppCompatActivity() {
     lateinit var rvTempList: RecyclerView
     lateinit var cardAdapter: AdapterCardTemp
 
-    private val retrofitModule = RetrofitModule
+    private val viewModel by lazy { WeatherListViewModel.create() }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val cardTempList = arrayListOf<CardTemp>(
-            CardTemp("6 am", "jsapdoifjasdf", "12º"),
-            CardTemp("7 am", "dsifjsa", "14º"),
-            CardTemp("8 am", "dasipfhasd", "15º"),
-            CardTemp("9 am", "doishfsadf", "16º"),
-            CardTemp("10 am", "jsapdoifjasdf", "12º"),
-            CardTemp("11 am", "dsifjsa", "14º"),
-            CardTemp("12 am", "dasipfhasd", "15º")
-            )
+//        val cardTempList = arrayListOf<CardTemp>(
+//            CardTemp("6 am", "jsapdoifjasdf", "12º"),
+//            CardTemp("7 am", "dsifjsa", "14º"),
+//            CardTemp("8 am", "dasipfhasd", "15º"),
+//            CardTemp("9 am", "doishfsadf", "16º"),
+//            CardTemp("10 am", "jsapdoifjasdf", "12º"),
+//            CardTemp("11 am", "dsifjsa", "14º"),
+//            CardTemp("12 am", "dasipfhasd", "15º")
+//            )
 
         cardAdapter = AdapterCardTemp()
         rvTempList = findViewById<RecyclerView>(R.id.rv_temp_list)
@@ -39,7 +40,17 @@ class MainActivity : AppCompatActivity() {
         rvTempList.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
         rvTempList.adapter = cardAdapter
 
-        cardAdapter.submitList(cardTempList)
+
+        viewModel.weatherListLiveData.observe(this) { cardTempList ->
+            val cardList = cardTempList.map { weatherDto ->
+
+                CardTemp(
+                    time = weatherDto.time.toString(),
+                    temperature_2m = weatherDto.temperature_2m.toString()
+                )
+            }
+            cardAdapter.submitList(cardList)
+        }
 
         val btnOpenDay = findViewById<Button>(R.id.btn_open_dayWeek)
         btnOpenDay.setOnClickListener {

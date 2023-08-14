@@ -1,11 +1,12 @@
 package com.example.zerotwoweather.view.remote
 
+import java.time.LocalDateTime
+
 data class WeatherResponse(
-    val daily_units: String,
-    val daily: List<WeatherDto>
+    val hourly: WeatherDto
 )
 
 data class WeatherDto(
-    val temperature_2m_mean_FGOALS_f3_H: String,
-    val time: String
+    val time: List<String>,
+    val temperature_2m: List<String>
 )
