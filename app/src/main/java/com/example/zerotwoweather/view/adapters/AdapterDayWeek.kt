@@ -1,4 +1,4 @@
-package com.example.zerotwoweather.view
+package com.example.zerotwoweather.view.adapters
 
 import android.view.LayoutInflater
 import android.view.View
@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.zerotwoweather.R
+import com.example.zerotwoweather.data.model.DayWeek
 
 class AdapterDayWeek():ListAdapter<DayWeek, ViewHolderDayWeek>(AdapterDayWeek)  {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolderDayWeek {
