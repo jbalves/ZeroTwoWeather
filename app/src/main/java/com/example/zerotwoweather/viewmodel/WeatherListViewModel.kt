@@ -1,13 +1,12 @@
-package com.example.zerotwoweather.view
+package com.example.zerotwoweather.viewmodel
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.zerotwoweather.view.remote.RetrofitModule
-import com.example.zerotwoweather.view.remote.WeatherDto
-import kotlinx.coroutines.Dispatchers.IO
+import com.example.zerotwoweather.data.remote.WeatherService
+import com.example.zerotwoweather.data.remote.RetrofitModule
+import com.example.zerotwoweather.data.remote.WeatherDto
 import kotlinx.coroutines.launch
 
 class WeatherListViewModel(
@@ -33,7 +32,7 @@ class WeatherListViewModel(
     }
 
     companion object{
-        fun create(): WeatherListViewModel{
+        fun create(): WeatherListViewModel {
             val weatherService = RetrofitModule.createWeatherService()
             return WeatherListViewModel(weatherService)
         }

@@ -1,6 +1,5 @@
-package com.example.zerotwoweather.view.remote
+package com.example.zerotwoweather.data.remote
 
-import com.example.zerotwoweather.view.WeatherService
 import com.google.gson.Gson
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
