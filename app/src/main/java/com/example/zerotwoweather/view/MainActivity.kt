@@ -92,6 +92,7 @@ class MainActivity : AppCompatActivity(), LocationListener {
     override fun onLocationChanged(location: Location) {
         val address = geocoder.getFromLocation(location.latitude,location.longitude,1)
         cityTextView.text = address?.get(0)?.locality
+        cityTextView.text = address?.get(0)?.subAdminArea
     }
 
     override fun onRequestPermissionsResult(
